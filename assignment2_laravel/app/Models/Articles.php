@@ -9,6 +9,7 @@ class Articles extends Model
 {
     /** @use HasFactory<\Database\Factories\ArticlesFactory> */
     use HasFactory;
+    protected $primaryKey = 'ArticleId';
     protected $fillable = [
         'Title',
         'Body',

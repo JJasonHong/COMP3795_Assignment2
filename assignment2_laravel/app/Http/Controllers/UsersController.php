@@ -22,7 +22,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        // Not used in an API context
     }
 
     /**
@@ -30,7 +30,24 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'username' => 'required|string|max:255',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'password' => 'required|string|min:8',
+            'registrationDate' => 'required|date',
+            'isApproved' => 'required|boolean',
+            'role' => 'required|string|max:255'
+        ]);
+
+        // Sanitize inputs
+        $validated['username'] = strip_tags($validated['username']);
+        $validated['firstName'] = strip_tags($validated['firstName']);
+        $validated['lastName'] = strip_tags($validated['lastName']);
+        $validated['role'] = strip_tags($validated['role']);
+
+        $user = User::create($validated);
+        return new UsersResource($user);
     }
 
     /**
@@ -38,7 +55,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return new UsersResource($user);
     }
 
     /**
@@ -46,7 +63,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        // Not used in an API context
     }
 
     /**
@@ -54,7 +71,27 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'username' => 'required|string|max:255',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'password' => 'sometimes|string|min:8',
+            'registrationDate' => 'required|date',
+            'isApproved' => 'required|boolean',
+            'role' => 'required|string|max:255'
+        ]);
+
+        // Sanitize inputs
+        $validated['username'] = strip_tags($validated['username']);
+        $validated['firstName'] = strip_tags($validated['firstName']);
+        $validated['lastName'] = strip_tags($validated['lastName']);
+        $validated['role'] = strip_tags($validated['role']);
+
+        $user->update($validated);
+        return [
+            'success' => true,
+            'user' => new UsersResource($user)
+        ];
     }
 
     /**
@@ -62,6 +99,9 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $isSuccess = $user->delete();
+        return [
+            'success' => $isSuccess
+        ];
     }
 }

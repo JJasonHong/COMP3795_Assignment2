@@ -19,50 +19,70 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     //
-    // }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'Title' => 'required|string|max:255',
+            'Body' => 'required|string',
+            'CreatDate' => 'required|date',
+            'StartDate' => 'required|date',
+            'EndDate' => 'required|date',
+            'ContributorUsername' => 'required|string|max:255'
+        ]);
+
+        // Sanitize inputs
+        $validated['Title'] = strip_tags($validated['Title']);
+        $validated['Body'] = strip_tags($validated['Body']);
+        $validated['ContributorUsername'] = strip_tags($validated['ContributorUsername']);
+
+        $article = Articles::create($validated);
+        return new ArticlesResource($article);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Articles $articles)
+    public function show(Articles $article)
     {
-        //
+        return new ArticlesResource($article);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit(Articles $articles)
-    // {
-    //     //
-    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Articles $articles)
+    public function update(Request $request, Articles $article)
     {
-        //
+        $validated = $request->validate([
+            'Title' => 'required|string|max:255',
+            'Body' => 'required|string',
+            'CreatDate' => 'required|date',
+            'StartDate' => 'required|date',
+            'EndDate' => 'required|date',
+            'ContributorUsername' => 'required|string|max:255'
+        ]);
+
+        // Sanitize inputs
+        $validated['Title'] = strip_tags($validated['Title']);
+        $validated['Body'] = strip_tags($validated['Body']);
+        $validated['ContributorUsername'] = strip_tags($validated['ContributorUsername']);
+
+        $article->update($validated);
+        return [
+            'success' => true,
+            'article' => new ArticlesResource($article)
+        ];
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Articles $articles)
+    public function destroy(Articles $article)
     {
-        //
+        $isSuccess = $article->delete();
+        return [
+            'success' => $isSuccess
+        ];
     }
 }

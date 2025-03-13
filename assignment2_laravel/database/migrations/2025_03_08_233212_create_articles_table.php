@@ -13,7 +13,7 @@ return new class extends Migration
 {
     Schema::create('articles', function (Blueprint $table) {
         // Use bigIncrements with the name 'ArticleId' to match the query.
-        $table->increments('ArticleId');
+        $table->id('ArticleId');
 
         // Article title and body
         $table->string('Title');
