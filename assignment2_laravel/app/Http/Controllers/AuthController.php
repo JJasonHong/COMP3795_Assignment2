@@ -52,7 +52,7 @@ class AuthController extends Controller
             'username'  => 'required|string|max:255',
             'firstName' => 'required|string|max:255',
             'lastName'  => 'required|string|max:255',
-            'password'  => 'required|string|min:8'
+            'password' => 'required|string|min:8|confirmed'
         ]);
 
         // Sanitize inputs
