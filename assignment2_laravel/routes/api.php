@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\UsersController;
-
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +21,35 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('articles', [ArticlesController::class, 'index'])->name('articles.index');
-Route::get('articles/{article}', [ArticlesController::class, 'show']);
-Route::post('articles', [ArticlesController::class, 'store']);
-Route::put('articles/{article}', [ArticlesController::class, 'update']);
-Route::delete('articles/{article}', [ArticlesController::class, 'destroy']);
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+});
 
-Route::get('users', [UsersController::class, 'index'])->name('users.index');
-Route::get('users/{user}', [UsersController::class, 'show']);
-Route::post('users', [UsersController::class, 'store']);
-Route::put('users/{user}', [UsersController::class, 'update']);
-Route::delete('users/{user}', [UsersController::class, 'destroy']);
+// Public article routes
+Route::controller(ArticlesController::class)->group(function () {
+    Route::get('articles', 'index')->name('articles.index');
+    Route::get('articles/{article}', 'show');
+});
+
+// Protected article routes (require authentication)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::controller(ArticlesController::class)->group(function () {
+        Route::post('articles', 'store');
+        Route::put('articles/{article}', 'update');
+        Route::delete('articles/{article}', 'destroy');
+    });
+});
+
+// Protected user routes
+Route::middleware('auth:sanctum')->group(function () {
+    Route::controller(UsersController::class)->group(function () {
+         Route::get('users', 'index')->name('users.index');
+         Route::get('users/{user}', 'show');
+         Route::post('users', 'store');
+         Route::put('users/{user}', 'update');
+         Route::delete('users/{user}', 'destroy');
+    });
+});
