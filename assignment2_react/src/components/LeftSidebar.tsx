@@ -13,23 +13,23 @@ const LeftSidebar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/podcasts" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
+              <Link to="https://podcasts.apple.com/us/browse" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
                 <i className="bi bi-mic me-2"></i> Podcasts
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/videos" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
+              <Link to="https://www.youtube.com/" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
                 <i className="bi bi-play-circle me-2"></i> Videos
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/tags" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
+              <Link to="https://rapidtags.io/generator" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
                 <i className="bi bi-tags me-2"></i> Tags
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/help" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
-                <i className="bi bi-question-circle me-2"></i> DEV Help
+              <Link to="https://www.google.ca/" className="nav-link px-0 py-2 text-body-secondary d-flex align-items-center">
+                <i className="bi bi-question-circle me-2"></i> Help
               </Link>
             </li>
           </ul>

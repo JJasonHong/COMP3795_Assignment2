@@ -32,14 +32,14 @@ const NavBar = ({ title }: NavBarProps) =>
                 <Link className="nav-link px-3" to="http://127.0.0.1:8000/create">Create Post</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/notifications">
+                <Link className="nav-link px-3" to="http://127.0.0.1:8000">
                   <i className="bi bi-bell"></i>
                 </Link>
               </li>
             </ul>
             <div className="d-flex">
-              <Link to="/login" className="btn btn-outline-primary me-2">Log in</Link>
-              <Link to="/register" className="btn btn-primary">Create account</Link>
+              <Link to="http://127.0.0.1:8000" className="btn btn-outline-primary me-2">Log in</Link>
+              <Link to="http://127.0.0.1:8000" className="btn btn-primary">Create account</Link>
             </div>
           </div>
         </div>

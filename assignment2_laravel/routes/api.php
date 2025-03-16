@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +53,15 @@ Route::middleware('auth:sanctum')->group(function () {
          Route::put('users/{user}', 'update');
          Route::delete('users/{user}', 'destroy');
     });
+});
+
+// Admin routes (require authentication and admin role)
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
+    // Admin dashboard data
+    Route::get('dashboard', [AdminController::class, 'index']);
+    
+    // User management endpoints
+    Route::post('users/{id}/approve', [AdminController::class, 'approveUser']);
+    Route::post('users/{id}/role', [AdminController::class, 'updateRole']);
+    Route::delete('users/{id}', [AdminController::class, 'deleteUser']);
 });

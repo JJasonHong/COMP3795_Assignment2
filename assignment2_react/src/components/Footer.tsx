@@ -27,13 +27,13 @@ const Footer = ({ title }: FooterProps) => {
                 <Link to="/" className="text-decoration-none text-secondary">Home</Link>
               </li>
               <li className="mb-2">
-                <Link to="/podcasts" className="text-decoration-none text-secondary">Podcasts</Link>
+                <Link to="https://podcasts.apple.com/us/browse" className="text-decoration-none text-secondary">Podcasts</Link>
               </li>
               <li className="mb-2">
-                <Link to="/videos" className="text-decoration-none text-secondary">Videos</Link>
+                <Link to="https://www.youtube.com/" className="text-decoration-none text-secondary">Videos</Link>
               </li>
               <li className="mb-2">
-                <Link to="/tags" className="text-decoration-none text-secondary">Tags</Link>
+                <Link to="https://rapidtags.io/generator" className="text-decoration-none text-secondary">Tags</Link>
               </li>
             </ul>
           </div>
