@@ -4,6 +4,8 @@ import HomePage from "../pages/HomePage";
 import App from "../App";
 import NotFoundPage from "../components/NotFoundPage";
 import BlogPostPage from "../pages/BlogPostPage"; // You'll need to create this component
+import BlogPage from "../pages/BlogPage"; // For all articles
+import CreatePostPage from "../pages/CreatePostPage"; // Create post
 
 /**
 * The router configuration for the application.
@@ -24,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <AboutPage message={"About our blog and authors."} />,
+        element: <AboutPage message={ "About our blog and authors." } />,
       },
       {
         path: "/post/:id",
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFoundPage />,
+      },
+      {
+        path: "/blog", // View all articles
+        element: <BlogPage />,
+      },
+      {
+        path: "/create", // Create a post
+        element: <CreatePostPage />,
       },
     ],
   },

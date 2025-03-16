@@ -1,6 +1,7 @@
 /**
- * This is used to display 5 articles on the home page.
+ * This is used to display ALL ARTICLES when the user clicks view all posts on the home page.
  */
+
 import { Link } from "react-router-dom";
 
 export interface BlogPost
@@ -26,9 +27,9 @@ type PostsListProps = {
 
 const PostsList = ({ posts }: PostsListProps) =>
 {
+    
     return (
         <>
-            <h3 className="fw-bold mb-4">Recent Posts</h3>
             <div className="row row-cols-1 g-4 mb-4">
                 { posts.map((post) => (
                     <div className="col" key={ post.ArticleId }>
@@ -76,11 +77,6 @@ const PostsList = ({ posts }: PostsListProps) =>
                         </div>
                     </div>
                 )) }
-            </div>
-            <div className="text-center mt-4">
-                <Link to="/blog" className="btn btn-outline-primary px-4">
-                    View All Posts
-                </Link>
             </div>
         </>
     );

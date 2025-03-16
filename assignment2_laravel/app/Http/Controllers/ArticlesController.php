@@ -34,7 +34,9 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Articles::where('EndDate', '>=', now())->get();
+        $articles = Articles::where('EndDate', '>=', now())
+            ->orderBy('CreatDate', 'desc')
+            ->get();
         $formattedArticles = ArticlesResource::collection($articles);
         return $formattedArticles;
     }
@@ -48,9 +50,6 @@ class ArticlesController extends Controller
         $validated = $request->validate([
             'Title' => 'required|string|max:255',
             'Body' => 'required|string',
-            'CreatDate' => 'required|date',
-            'StartDate' => 'required|date',
-            'EndDate' => 'required|date',
             'ContributorUsername' => 'required|string|max:255'
         ]);
 
@@ -59,9 +58,14 @@ class ArticlesController extends Controller
         $validated['Body'] = strip_tags($validated['Body']);
         $validated['ContributorUsername'] = strip_tags($validated['ContributorUsername']);
 
+        // Set the creation date, start date, and end date
+        $validated['CreatDate'] = now();
+        $validated['StartDate'] = now();
+        $validated['EndDate'] = now()->addDays(30);
+
         // Creates a new article using the validated data by calling the create() method on the Articles model.
         $article = Articles::create($validated);
-        return new ArticlesResource($article);
+        return redirect('/create')->with('success', 'Post created successfully!');
     }
 
     /**
@@ -123,5 +127,11 @@ class ArticlesController extends Controller
         return [
             'success' => $isSuccess
         ];
+    }
+
+
+    public function create()
+    {
+        return view('create');
     }
 }

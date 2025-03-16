@@ -34,65 +34,42 @@ export type BlogPost = {
 
 type FilterType = 'relevant' | 'latest' | 'top';
 
-const HomePage = ({ title = "DEV Community" }: HomePageProps) => {
-  const [activeFilter, setActiveFilter] = useState<FilterType>('relevant');
-  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
+const HomePage = ({ title = "DEV Community" }: HomePageProps) =>
+{
+  const [ articles, setArticles ] = useState<BlogPost[]>([]); // Added state to store articles
+  const [ activeFilter, setActiveFilter ] = useState<FilterType>('relevant');
 
-  // Fetch articles from the Laravel API on component mount
-  useEffect(() => {
-    axios.get(`${Config.API_BASE_URL}/articles`)
-      .then(response => {
-        // Assuming the API returns an array of posts directly.
-        setFeaturedPosts(response.data.data || response.data);
+  // Fetch articles from Laravel API when component mounts
+  useEffect(() =>
+  {
+    axios.get(`${ Config.API_BASE_URL }/articles`)
+      .then(response =>
+      {
+        setArticles(response.data.data || response.data); // Store fetched articles
       })
-      .catch(error => {
-        console.error("Error fetching articles:", error);
-      });
+      .catch(error => console.error("Error fetching articles:", error));
   }, []);
-
-  // Filter posts based on the active filter
-  const getFilteredPosts = () => {
-    switch (activeFilter) {
-      case 'latest':
-        return [...featuredPosts].sort((a, b) =>
-          new Date(b.CreatDate).getTime() - new Date(a.CreatDate).getTime()
-        );
-      case 'top':
-        return [...featuredPosts].sort((a, b) =>
-          (b.reactions || 0) - (a.reactions || 0)
-        );
-      case 'relevant':
-      default:
-        return featuredPosts;
-    }
-  };
-
-  const filteredPosts = getFilteredPosts();
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-light">
-      {/* NavBar */}
-      <NavBar title={title} />
+      {/* NavBar */ }
+      <NavBar title={ title } />
 
       <main className="container flex-grow-1 py-4">
         <div className="row g-4">
-          {/* Left Sidebar */}
+          {/* Left Sidebar */ }
           <aside className="col-lg-3 d-none d-lg-block">
             <LeftSidebar />
           </aside>
 
-          {/* Main Content */}
+          {/* Main Content */ }
           <div className="col-lg-6">
-            {/* Filter Tabs */}
-            <FilterTabs activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+            {/* Filter Tabs */ }
+            <FilterTabs activeFilter={ activeFilter } setActiveFilter={ setActiveFilter } />
 
-            {/* Featured Post */}
-            {filteredPosts.length > 0 && (
-              <FeaturedPost post={filteredPosts[0]} />
-            )}
 
-            {/* Challenges Section */}
-            <div className="card border-0 shadow-sm mb-4 bg-gradient" style={{ background: 'linear-gradient(135deg, #6366F1, #8B5CF6)' }}>
+            {/* Challenges Section */ }
+            <div className="card border-0 shadow-sm mb-4 bg-gradient" style={ { background: 'linear-gradient(135deg, #6366F1, #8B5CF6)' } }>
               <div className="card-body p-4 text-black">
                 <h3 className="fw-bold mb-2">DEV CHALLENGES</h3>
                 <p className="mb-1 fw-medium">2025 CELEBRATION! MARCH 5 - APRIL 6</p>
@@ -103,24 +80,28 @@ const HomePage = ({ title = "DEV Community" }: HomePageProps) => {
               </div>
             </div>
 
-            {/* PostsList with recent posts (excluding featured) */}
-            <PostsList posts={filteredPosts.slice(1)} />
+            {/* Featured Post */ }
+            { articles.length > 0 && <FeaturedPost post={ articles[ 0 ] } /> }
+
+            {/* Recent posts: articles latest 5 */ }
+            <PostsList posts={ articles.slice(1, 5) } />
+
           </div>
 
-          {/* Right Sidebar */}
+          {/* Right Sidebar */ }
           <aside className="col-lg-3 d-none d-lg-block">
             <RightSidebar />
           </aside>
         </div>
       </main>
 
-      {/* Footer */}
-      <Footer title={title} />
+      {/* Footer */ }
+      <Footer title={ title } />
 
-      {/* Bootstrap icons & custom styles */}
+      {/* Bootstrap icons & custom styles */ }
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
       <style>
-        {`
+        { `
         .transition-hover {
           transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
