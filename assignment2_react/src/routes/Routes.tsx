@@ -1,4 +1,3 @@
-import AboutPage from '../pages/AboutPage';
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import App from "../App";
@@ -23,10 +22,6 @@ export const router = createBrowserRouter([
             subtitle="Thoughts, stories and ideas"
           />
         ),
-      },
-      {
-        path: "/about",
-        element: <AboutPage message={ "About our blog and authors." } />,
       },
       {
         path: "/post/:id",

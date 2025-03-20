@@ -20,14 +20,19 @@ const NavBar = ({ title }: NavBarProps) =>
           <div className="collapse navbar-collapse" id="navbarNav">
             <form className="d-flex mx-lg-4 flex-grow-1">
               <div className="input-group">
-                <span className="input-group-text bg-light border-end-0">
+                <Link 
+                  to="https://www.google.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="input-group-text bg-light border-end-0 text-decoration-none"
+                >
                   <i className="bi bi-search"></i>
-                </span>
+                </Link>
                 <input className="form-control bg-light border-start-0" type="search" placeholder="Search..." />
               </div>
             </form>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-none d-lg-flex">
-              <li className="nav-item">
+            <li className="nav-item">
                 {/* Link to backend create */ }
                 <Link className="nav-link px-3" to="http://127.0.0.1:8000/create">Create Post</Link>
               </li>
@@ -37,10 +42,7 @@ const NavBar = ({ title }: NavBarProps) =>
                 </Link>
               </li>
             </ul>
-            <div className="d-flex">
-              <Link to="http://127.0.0.1:8000" className="btn btn-outline-primary me-2">Log in</Link>
-              <Link to="http://127.0.0.1:8000" className="btn btn-primary">Create account</Link>
-            </div>
+
           </div>
         </div>
       </nav>

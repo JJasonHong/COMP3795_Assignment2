@@ -10,14 +10,14 @@ const RightSidebar = () => {
           </h5>
           <div className="list-group list-group-flush">
             <Link
-              to="/challenges/kendo"
+              to="https://www.google.ca/"
               className="list-group-item list-group-item-action border-0 px-0"
             >
               <div className="fw-medium">KendoReact Challenge</div>
               <div className="small text-muted">Win $5000 in prizes</div>
             </Link>
             <Link
-              to="/challenges/writing"
+              to="https://www.google.ca/"
               className="list-group-item list-group-item-action border-0 px-0"
             >
               <div className="fw-medium">Future Writing Challenge</div>
