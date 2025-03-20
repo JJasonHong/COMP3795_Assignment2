@@ -1,49 +1,53 @@
 @extends('layouts.master')
 @section('content')
-<section class="vh-100">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-6 text-black">
+    @include('navbar.before_login')
+    <section class="min-h-screen flex items-center bg-white dark:bg-gray-800">
 
-        <div class="px-5 ms-xl-4">
-          <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
-          <span class="h1 fw-bold mb-0">Logo</span>
-        </div>
-
-        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
-          <form style="width: 23rem;">
-
-            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
-
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" id="form2Example18" class="form-control form-control-lg" />
-              <label class="form-label" for="form2Example18">Email address</label>
+        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+            <h1
+                class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                Welcome to Your Creative Dashboard!</h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Please sign in
+                or create an account to get started.</p>
+            <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <a href="#"
+                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 -ml-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+                    </svg>
+                    Sign In
+                </a>
+                <a href="{{ route('register') }}"
+                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-600 border border-transparent hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 -ml-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    Register
+                </a>
             </div>
 
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="form2Example28" class="form-control form-control-lg" />
-              <label class="form-label" for="form2Example28">Password</label>
+            <div class="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
+                <span class="font-semibold text-gray-400 uppercase">MADE BY</span>
+                <div class="flex flex-wrap justify-center items-center mt-8 text-gray-500 sm:justify-between">
+                    <a href="#"
+                        class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400 text-xl font-bold">
+                        Jason Hong
+                    </a>
+                    <a href="#"
+                        class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400 text-xl font-bold">
+                        Gem Baojimin
+                    </a>
+                    <a href="#"
+                        class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400 text-xl font-bold">
+                        Brian Diep
+                    </a>
+                </div>
             </div>
 
-            <div class="pt-1 mb-4">
-              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-lg btn-block" type="button">Login</button>
-            </div>
-
-            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
-            <p>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
-
-          </form>
-
         </div>
-
-      </div>
-      <div class="col-sm-6 px-0 d-none d-sm-block">
-        <div style="background-color: rgb(0, 32, 139); height: 100vh; display: flex; align-items: center; justify-content: center;">
-          <h1 class="text-white">Welcome</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        
+    </section>
 @endsection

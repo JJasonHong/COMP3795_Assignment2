@@ -3,6 +3,8 @@
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterUserController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +33,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/users/{id}/role', [AdminController::class, 'updateRole']);
     Route::delete('/users/{id}', [AdminController::class, 'deleteUser']);
 });
+
+Route::get('/register', [RegisterUserController::class, 'register'])->name('register');
+Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
