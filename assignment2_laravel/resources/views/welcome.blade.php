@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     @include('navbar.before_login')
-    <section class="min-h-screen flex items-center bg-white dark:bg-gray-800">
+    <section class="min-h-screen flex items-center bg-white dark:bg-gray-700">
 
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
             <h1
@@ -10,7 +10,7 @@
             <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Please sign in
                 or create an account to get started.</p>
             <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                <a href="#"
+                <a href="{{ route('login') }}"
                     class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 -ml-1" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
