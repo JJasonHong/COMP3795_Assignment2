@@ -4,7 +4,6 @@ import NavBar from "../components/NavBar";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import PostsList from "../components/PostsList";
-import FeaturedPost from "../components/FeaturedPost";
 import Footer from "../components/Footer";
 import Config from "../config";
 
@@ -24,10 +23,6 @@ export type BlogPost = {
   ContributorUsername: string;
   created_at: string;
   updated_at: string;
-  category?: string;
-  readTime?: number;
-  comments?: number;
-  reactions?: number;
 };
 
 const HomePage = ({ title = "My Blog" }: HomePageProps) => {
@@ -56,11 +51,8 @@ const HomePage = ({ title = "My Blog" }: HomePageProps) => {
 
           {/* Main Content */}
           <div className="col-lg-6">
-            {/* Featured Post */}
-            {articles.length > 0 && <FeaturedPost post={articles[0]} />}
-
-            {/* Recent posts: articles latest 5 */}
-            <PostsList posts={articles.slice(1, 5)} />
+            {/* Pass ALL articles to PostsList */}
+            <PostsList posts={articles} />
           </div>
 
           {/* Right Sidebar */}

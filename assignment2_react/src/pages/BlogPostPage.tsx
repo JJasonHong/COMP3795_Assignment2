@@ -15,10 +15,7 @@ type BlogPost = {
   ContributorUsername: string;
   created_at: string;
   updated_at: string;
-  category?: string;
-  readTime?: number;
-  comments?: number;
-  reactions?: number;
+  
 };
 
 const BlogPostPage = () => {
@@ -66,7 +63,7 @@ const BlogPostPage = () => {
             </div>
           </div>
         </div>
-        <Footer title="DEV Community" />
+        <Footer title="MyBlog Community" />
       </div>
     );
   }
@@ -140,13 +137,13 @@ const BlogPostPage = () => {
                       </button>
                     </div>
                     <div className="d-flex gap-2">
-                      <a href="#" className="btn btn-outline-dark rounded-circle">
+                      <a href="https://x.com/?lang=en-ca" className="btn btn-outline-dark rounded-circle">
                         <i className="bi bi-twitter"></i>
                       </a>
-                      <a href="#" className="btn btn-outline-dark rounded-circle">
+                      <a href="https://www.facebook.com/" className="btn btn-outline-dark rounded-circle">
                         <i className="bi bi-facebook"></i>
                       </a>
-                      <a href="#" className="btn btn-outline-dark rounded-circle">
+                      <a href="https://www.linkedin.com/" className="btn btn-outline-dark rounded-circle">
                         <i className="bi bi-linkedin"></i>
                       </a>
                     </div>
@@ -174,13 +171,13 @@ const BlogPostPage = () => {
                   </div>
                 )}
                 
-                <form className="mt-4">
+                {/* <form className="mt-4">
                   <div className="mb-3">
                     <label htmlFor="comment" className="form-label fw-bold">Add a comment</label>
                     <textarea className="form-control" id="comment" rows={3} placeholder="Join the discussion..."></textarea>
                   </div>
                   <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+                </form> */}
               </div>
             </div>
           </div>
