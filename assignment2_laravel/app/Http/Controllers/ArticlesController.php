@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Articles;
 use Illuminate\Http\Request;
 use App\Http\Resources\ArticlesResource;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Controllers: Used to handle HTTP requests (GET, POST, PUT, DELETE) from the user and return responses (data).
@@ -65,7 +66,7 @@ class ArticlesController extends Controller
 
         // Creates a new article using the validated data by calling the create() method on the Articles model.
         $article = Articles::create($validated);
-        return redirect('/create')->with('success', 'Post created successfully!');
+        return redirect()->route('articles.create')->with('success', 'Post created successfully!');
     }
 
     /**
@@ -100,22 +101,23 @@ class ArticlesController extends Controller
         $validated = $request->validate([
             'Title' => 'sometimes|required|string|max:255',
             'Body' => 'sometimes|required|string',
-            'CreatDate' => 'sometimes|required|date',
+            // Removed CreatDate as users should not edit it
             'StartDate' => 'sometimes|required|date',
-            'EndDate' => 'sometimes|required|date',
+            'EndDate' => 'sometimes|required|date|after_or_equal:today',
             'ContributorUsername' => 'sometimes|required|string|max:255'
         ]);
 
-        // Sanitize inputs
-        $validated['Title'] = strip_tags($validated['Title']);
-        $validated['Body'] = strip_tags($validated['Body']);
-        $validated['ContributorUsername'] = strip_tags($validated['ContributorUsername']);
+        // Sanitize inputs if provided
+        if (isset($validated['Title'])) {
+            $validated['Title'] = strip_tags($validated['Title']);
+        }
+        if (isset($validated['Body'])) {
+            $validated['Body'] = strip_tags($validated['Body']);
+        }
+
 
         $article->update($validated);
-        return [
-            'success' => true,
-            'article' => new ArticlesResource($article)
-        ];
+        return redirect()->route('articles.create')->with('success', 'Post created successfully!');
     }
 
     /**
@@ -128,7 +130,18 @@ class ArticlesController extends Controller
             'success' => $isSuccess
         ];
     }
+    public function editIndex()
+    {
+        // Assuming you have authentication set up
+        $articles = Articles::where('ContributorUsername', Auth::user()->username)->get();
+        return view('edit', compact('articles'));
+    }
 
+
+    // public function edit()
+    // {
+    //     return view('edit');
+    // }
 
     public function create()
     {

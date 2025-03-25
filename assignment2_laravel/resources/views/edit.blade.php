@@ -1,52 +1,28 @@
 @extends('layouts.master')
 
-@section('title', 'Edit Post')
+@section('title', 'Edit Your Articles')
 
 @section('content')
-<div class="container py-4">
-    <h2 class="fw-bold mb-4">Edit Post</h2>
-
-    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
-
-    <form action="{{ url('/articles/' . $article->ArticleId) }}" method="POST">
-        @csrf
-        @method('PUT')
-
-        <div class="mb-3">
-            <label for="title" class="form-label fw-bold">Title</label>
-            <input type="text" id="title" name="Title" class="form-control" value="{{ $article->Title }}" required>
+    @include('navbar.after_login')
+    <section class="min-h-screen flex flex-col items-center justify-start pt-12 bg-white dark:bg-gray-700">
+        <div class="w-11/12 max-w-4xl p-6 m-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <h2 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Your Articles</h2>
+            
+            @if($articles->isEmpty())
+                <p class="text-gray-700 dark:text-gray-400">You have not written any articles yet.</p>
+            @else
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @foreach($articles as $article)
+                        <div class="p-4 bg-gray-50 dark:bg-gray-700 border rounded-lg">
+                            <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">{{ $article->Title }}</h3>
+                            <p class="mb-2 text-gray-700 dark:text-gray-300">{{ Str::limit($article->Body, 100) }}</p>
+                            <a href="{{ route('articles.update', $article->ArticleId) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Edit
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
-
-        <div class="mb-3">
-            <label for="body" class="form-label fw-bold">Body</label>
-            <textarea id="body" name="Body" class="form-control" rows="5" required>{{ $article->Body }}</textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="username" class="form-label fw-bold">Your Username</label>
-            <input type="text" id="username" name="ContributorUsername" class="form-control" value="{{ $article->ContributorUsername }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="creat_date" class="form-label fw-bold">Creation Date</label>
-            <input type="date" id="creat_date" name="CreatDate" class="form-control" value="{{ $article->CreatDate }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="start_date" class="form-label fw-bold">Start Date</label>
-            <input type="date" id="start_date" name="StartDate" class="form-control" value="{{ $article->StartDate }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="end_date" class="form-label fw-bold">End Date</label>
-            <input type="date" id="end_date" name="EndDate" class="form-control" value="{{ $article->EndDate }}" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update Post</button>
-    </form>
-</div>
+    </section>
 @endsection
