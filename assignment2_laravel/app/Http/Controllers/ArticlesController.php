@@ -51,6 +51,8 @@ class ArticlesController extends Controller
         $validated = $request->validate([
             'Title' => 'required|string|max:255',
             'Body' => 'required|string',
+            'StartDate' => 'required|date',
+            'EndDate' => 'required|date|after_or_equal:today',
             'ContributorUsername' => 'required|string|max:255'
         ]);
 
@@ -61,8 +63,7 @@ class ArticlesController extends Controller
 
         // Set the creation date, start date, and end date
         $validated['CreatDate'] = now();
-        $validated['StartDate'] = now();
-        $validated['EndDate'] = now()->addDays(30);
+
 
         // Creates a new article using the validated data by calling the create() method on the Articles model.
         $article = Articles::create($validated);
@@ -79,7 +80,7 @@ class ArticlesController extends Controller
      */
     public function show(Articles $article)
     {
-        return new ArticlesResource($article);
+        return view('show', compact('article'));
     }
 
     /**

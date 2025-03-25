@@ -26,6 +26,7 @@ Route::prefix('articles')->group(function () {
     Route::get('/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
     Route::put('/{article}', [ArticlesController::class, 'update'])->name('articles.update');
     Route::delete('/{article}', [ArticlesController::class, 'destroy'])->name('articles.destroy');
+    Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
 });
  Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
