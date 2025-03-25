@@ -80,7 +80,7 @@ class ArticlesController extends Controller
      */
     public function show(Articles $article)
     {
-        return view('show', compact('article'));
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -143,11 +143,11 @@ class ArticlesController extends Controller
 
     public function edit(Articles $article)
     {
-        return view('edit', compact('article'));
+        return view('articles.edit', compact('article'));
     }
 
     public function create()
     {
-        return view('create');
+        return view('articles.create');
     }
 }
