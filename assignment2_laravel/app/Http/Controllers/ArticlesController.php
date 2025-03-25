@@ -126,22 +126,24 @@ class ArticlesController extends Controller
     public function destroy(Articles $article)
     {
         $isSuccess = $article->delete();
-        return [
-            'success' => $isSuccess
-        ];
+        if ($isSuccess) {
+            return redirect()->route('dashboard')->with('success', 'Article deleted successfully!');
+        }
+        return redirect()->route('dashboard')->with('error', 'Article deletion failed.');
     }
-    public function editIndex()
+
+    public function dashboardIndex()
     {
         // Assuming you have authentication set up
         $articles = Articles::where('ContributorUsername', Auth::user()->username)->get();
-        return view('edit', compact('articles'));
+        return view('dashboard', compact('articles'));
     }
 
 
-    // public function edit()
-    // {
-    //     return view('edit');
-    // }
+    public function edit(Articles $article)
+    {
+        return view('edit', compact('article'));
+    }
 
     public function create()
     {

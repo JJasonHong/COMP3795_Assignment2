@@ -9,9 +9,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ArticlesController::class, 'dashboardIndex'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,7 +23,7 @@ Route::prefix('articles')->group(function () {
     Route::get('/create', [ArticlesController::class, 'create'])->name('articles.create');
     Route::post('/', [ArticlesController::class, 'store'])->name('articles.store');
     // Route::get('/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
-    Route::get('/edit', [ArticlesController::class, 'editIndex'])->name('articles.edit.index');
+    Route::get('/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
     Route::put('/{article}', [ArticlesController::class, 'update'])->name('articles.update');
     Route::delete('/{article}', [ArticlesController::class, 'destroy'])->name('articles.destroy');
 });
