@@ -40,10 +40,10 @@ const LeftSidebar = () => {
         <div className="card-body">
           <h5 className="card-title fw-bold mb-3">Popular Tags</h5>
           <div className="d-flex flex-wrap gap-2">
-            <Link to="/tag/javascript" className="badge bg-light text-dark text-decoration-none px-2 py-1">#javascript</Link>
-            <Link to="/tag/react" className="badge bg-light text-dark text-decoration-none px-2 py-1">#react</Link>
-            <Link to="/tag/webdev" className="badge bg-light text-dark text-decoration-none px-2 py-1">#webdev</Link>
-            <Link to="/tag/beginners" className="badge bg-light text-dark text-decoration-none px-2 py-1">#beginners</Link>
+            <Link to="#" className="badge bg-light text-dark text-decoration-none px-2 py-1">#javascript</Link>
+            <Link to="#" className="badge bg-light text-dark text-decoration-none px-2 py-1">#react</Link>
+            <Link to="#" className="badge bg-light text-dark text-decoration-none px-2 py-1">#webdev</Link>
+            <Link to="#" className="badge bg-light text-dark text-decoration-none px-2 py-1">#beginners</Link>
             <Link to="/tag/programming" className="badge bg-light text-dark text-decoration-none px-2 py-1">#programming</Link>
           </div>
         </div>

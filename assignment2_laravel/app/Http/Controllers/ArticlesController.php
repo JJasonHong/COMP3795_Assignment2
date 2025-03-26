@@ -83,6 +83,12 @@ class ArticlesController extends Controller
         return view('articles.show', compact('article'));
     }
 
+    public function showAPI(Articles $article)
+    {
+        return new ArticlesResource($article);
+    }
+
+
     /**
      * Update an existing article.
      * Validates the incoming request and updates the article with the validated data.

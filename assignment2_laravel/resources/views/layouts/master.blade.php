@@ -10,6 +10,12 @@
     <title>COMP3795 Assignment 2 - @yield('title')</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+<style>
+    /* Invert the calendar icon to white for supported browsers */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+</style>
 
 <body>
     <div>

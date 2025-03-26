@@ -19,10 +19,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('articles')->group(function () {
+
+Route::middleware('auth')->group(function () {
     Route::get('/create', [ArticlesController::class, 'create'])->name('articles.create');
     Route::post('/', [ArticlesController::class, 'store'])->name('articles.store');
-    // Route::get('/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
     Route::get('/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
     Route::put('/{article}', [ArticlesController::class, 'update'])->name('articles.update');
     Route::delete('/{article}', [ArticlesController::class, 'destroy'])->name('articles.destroy');

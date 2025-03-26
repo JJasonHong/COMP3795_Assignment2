@@ -32,7 +32,7 @@ Route::controller(AuthController::class)->group(function () {
 // Public article routes
 Route::controller(ArticlesController::class)->group(function () {
     Route::get('articles', 'index')->name('articles.index');
-    Route::get('articles/{article}', 'show');
+    Route::get('articles/{article}', 'showAPI');
 });
 
 // Protected article routes (require authentication)

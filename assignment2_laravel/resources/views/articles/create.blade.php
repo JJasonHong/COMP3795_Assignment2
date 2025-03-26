@@ -26,6 +26,8 @@
                     <label for="body" class="block mb-1 text-sm font-semibold text-gray-900 dark:text-white">Body</label>
                     <textarea id="body" name="Body" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" rows="5" required></textarea>
                 </div>
+                
+                
 
                 <div class="mb-4">
                     <label for="start_date" class="block mb-1 text-sm font-semibold text-gray-900 dark:text-white">Start Date</label>
@@ -46,4 +48,5 @@
             </form>
         </div>
     </section>
+    
 @endsection

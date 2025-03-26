@@ -33,14 +33,10 @@ const NavBar = ({ title }: NavBarProps) =>
             </form>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-none d-lg-flex">
             <li className="nav-item">
-                {/* Link to backend create */ }
-                <Link className="nav-link px-3" to="http://127.0.0.1:8000/create">Create Post</Link>
+              
+                
               </li>
-              <li className="nav-item">
-                <Link className="nav-link px-3" to="http://127.0.0.1:8000">
-                  <i className="bi bi-bell"></i>
-                </Link>
-              </li>
+           
             </ul>
 
           </div>
