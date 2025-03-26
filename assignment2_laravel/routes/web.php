@@ -28,11 +28,12 @@ Route::prefix('articles')->group(function () {
     Route::delete('/{article}', [ArticlesController::class, 'destroy'])->name('articles.destroy');
     Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
 });
- Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index']);
-    Route::post('/users/{id}/approve', [AdminController::class, 'approveUser']);
-    Route::post('/users/{id}/role', [AdminController::class, 'updateRole']);
-    Route::delete('/users/{id}', [AdminController::class, 'deleteUser']);
- });
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::post('/users/{id}/approve', [AdminController::class, 'approveUser'])->name('admin.users.approve');
+    Route::post('/users/{id}/role', [AdminController::class, 'updateRole'])->name('admin.users.role');
+    Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+});
 
 require __DIR__.'/auth.php';
