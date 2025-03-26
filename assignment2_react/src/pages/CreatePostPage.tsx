@@ -45,7 +45,7 @@ const CreatePostPage = () =>
 
     return (
         <div className="min-vh-100 d-flex flex-column bg-light">
-            <NavBar title="My Blog" />
+            <NavBar title="JBG Blog" />
             <main className="container py-4">
                 <h2 className="fw-bold mb-3">Create a New Post</h2>
                 { error && <div className="alert alert-danger">{ error }</div> }

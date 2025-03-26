@@ -25,7 +25,7 @@ export type BlogPost = {
   updated_at: string;
 };
 
-const HomePage = ({ title = "My Blog" }: HomePageProps) => {
+const HomePage = ({ title = "JGB Blog" }: HomePageProps) => {
   const [articles, setArticles] = useState<BlogPost[]>([]); // Added state to store articles
 
   // Fetch articles from Laravel API when component mounts

@@ -87,7 +87,7 @@ const BlogPostPage = () => {
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-light">
-      <NavBar title="My Blog" />
+      <NavBar title="JGB Blog" />
       
       <main className="container flex-grow-1 py-4">
         <div className="row justify-content-center">

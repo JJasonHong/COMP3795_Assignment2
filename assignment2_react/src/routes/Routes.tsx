@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: (
           <HomePage
-            title="My Blog"
+            title="JGB Blog"
             subtitle="Thoughts, stories and ideas"
           />
         ),
