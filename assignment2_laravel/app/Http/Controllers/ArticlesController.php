@@ -110,7 +110,7 @@ class ArticlesController extends Controller
             'Body' => 'sometimes|required|string',
             // Removed CreatDate as users should not edit it
             'StartDate' => 'sometimes|required|date',
-            'EndDate' => 'sometimes|required|date|after_or_equal:today',
+            'EndDate' => 'required|date|after_or_equal:today|after_or_equal:StartDate',
             'ContributorUsername' => 'sometimes|required|string|max:255'
         ]);
 
