@@ -52,7 +52,7 @@ class ArticlesController extends Controller
             'Title' => 'required|string|max:255',
             'Body' => 'required|string',
             'StartDate' => 'required|date',
-            'EndDate' => 'required|date|after_or_equal:today',
+            'EndDate' => 'required|date|after_or_equal:today|after_or_equal:StartDate',
             'ContributorUsername' => 'required|string|max:255'
         ]);
 

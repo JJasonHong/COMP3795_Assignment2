@@ -9,7 +9,7 @@
         <div
             class="w-11/12 max-w-4xl p-6 m-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $article->Title }}</h2>
-            <p class="mb-4 text-gray-700 dark:text-gray-300">{!! nl2br(e($article->Body)) !!}</p>
+            <p class="mb-4 text-gray-700 dark:text-gray-300 break-words">{!! nl2br(e($article->Body)) !!}</p>
             <div class="mb-4 text-gray-600 dark:text-gray-400">
                 <span>Start Date: {{ $article->StartDate }}</span> |
                 <span>End Date: {{ $article->EndDate }}</span>
