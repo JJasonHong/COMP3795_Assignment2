@@ -29,11 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::post('/users/{id}/approve', [AdminController::class, 'approveUser'])->name('admin.users.approve');
     Route::post('/users/{id}/role', [AdminController::class, 'updateRole'])->name('admin.users.role');
     Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 });
-
 require __DIR__.'/auth.php';

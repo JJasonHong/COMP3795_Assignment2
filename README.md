@@ -25,6 +25,7 @@ php artisan migrate
 To seed the database with sample data: php artisan db:seed
 
 Run Backend Server
+If you do not have vite installed run npm run build first*
 php artisan serve
 
 The backend will run at http://127.0.0.1:8000
