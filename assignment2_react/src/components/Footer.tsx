@@ -37,23 +37,6 @@ const Footer = ({ title }: FooterProps) => {
               </li>
             </ul>
           </div>
-          {/* <div className="col-6 col-lg-2">
-            <h6 className="fw-bold mb-3">Resources</h6>
-            <ul className="list-unstyled mb-0">
-              <li className="mb-2">
-                <Link to="/about" className="text-decoration-none text-secondary">About</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/contact" className="text-decoration-none text-secondary">Contact</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/guides" className="text-decoration-none text-secondary">Guides</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/faq" className="text-decoration-none text-secondary">FAQ</Link>
-              </li>
-            </ul>
-          </div> */}
           <div className="col-lg-4 mt-4 mt-lg-0">
             <h6 className="fw-bold mb-3">Connect with us</h6>
             <div className="d-flex gap-3 mb-3">
